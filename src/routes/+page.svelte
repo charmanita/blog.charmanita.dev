@@ -18,7 +18,7 @@
     <h1 class="title">blog</h1>
     <div class="posts">
       {#each posts as post}
-        <a href="/blog/{post.slug}" class="post">
+        <a href="/{post.slug}" class="post">
           <span class="post-title">{post.title}</span>
           <span class="post-date">{formatDate(post.date)}</span>
           <p class="post-desc">{post.description}</p>
