@@ -26,6 +26,7 @@
       {/each}
     </div>
   </div>
+  <footer>© 2026 Hunter Roberson · charmanita.dev</footer>
 </main>
 
 <style>
@@ -115,7 +116,19 @@
     color: #555;
     line-height: 1.6;
   }
-
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: white;
+    letter-spacing: 0.05em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
   @keyframes fadeIn {
     from {
       opacity: 0;
