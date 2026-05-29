@@ -4,7 +4,7 @@ import { initWasm, Resvg } from '@resvg/resvg-wasm';
 import { readFileSync } from 'node:fs';
 import { resolve} from 'node:path';
 
-const fontData = readFileSync(resolve('src/lib/IBMPlexMono-Regular.ttf'));
+import fontUrl from '$lib/IBMPlexMono-Regular.ttf';
 let wasmInitialized = false;
 
 export const GET: RequestHandler = async ({ url, fetch }) => {
@@ -23,7 +23,7 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
 
   const title = url.searchParams.get('title') ?? 'blog';
   const desc = url.searchParams.get('desc') ?? '';
-
+  const fontData = await fetch(fontUrl).then(r => r.arrayBuffer());
   const svg = await satori(
     {
       type: 'div',
