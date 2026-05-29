@@ -2,7 +2,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import satori from 'satori';
 import { initWasm, Resvg } from '@resvg/resvg-wasm';
 import { readFileSync } from 'node:fs';
-import { resolve} from 'path';
+import { resolve} from 'node:path';
 
 const fontData = readFileSync(resolve('src/lib/IBMPlexMono-Regular.ttf'));
 let wasmInitialized = false;
