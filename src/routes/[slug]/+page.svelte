@@ -10,6 +10,9 @@
     property="og:image"
     content={`https://blog.charmanita.dev/og?title=${encodeURIComponent(data.meta.title)}&desc=${encodeURIComponent(data.meta.description ?? "")}`}
   />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:type" content="article" />
   <meta
     property="og:url"

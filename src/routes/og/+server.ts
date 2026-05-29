@@ -16,7 +16,9 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
     // fallback to static image
     const fallback = await fetch('/images/og.png');
     return new Response(await fallback.arrayBuffer(), {
-      headers: { 'Content-Type': 'image/png' }
+      headers: { 'Content-Type': 'image/png',
+        'Cache-Control': 'public, max-age=604800'
+       }
     });
   }
 };
