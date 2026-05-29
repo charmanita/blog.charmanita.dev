@@ -5,6 +5,17 @@
 
 <svelte:head>
   <title>{data.meta.title} — charmanita.dev</title>
+  <meta property="og:title" content={data.meta.title} />
+  <meta
+    property="og:image"
+    content={`https://blog.charmanita.dev/og?title=${encodeURIComponent(data.meta.title)}&desc=${encodeURIComponent(data.meta.description ?? "")}`}
+  />
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:url"
+    content={`https://blog.charmanita.dev/${data.meta.slug}`}
+  />
+  <meta name="theme-color" content="#00ff88" />
 </svelte:head>
 
 <main>
