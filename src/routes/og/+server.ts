@@ -11,7 +11,10 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
     );
     if (!image.ok) throw new Error('upstream failed');
     return new Response(await image.arrayBuffer(), {
-      headers: { 'Content-Type': 'image/png' }
+      headers: { 'Content-Type': 'image/png',
+        'Cache-Control': 'public, max-age=604800',
+        'Content-Length': image.headers.get('content-length') ?? ''
+      }
     });
   } catch {
     // fallback to static image
