@@ -6,6 +6,7 @@
 <svelte:head>
   <title>{data.meta.title} — charmanita.dev</title>
   <meta property="og:title" content={data.meta.title} />
+  <meta property="og:description" content={data.meta.description} />
   <meta
     property="og:image"
     content={`https://blog.charmanita.dev/og?title=${encodeURIComponent(data.meta.title)}&desc=${encodeURIComponent(data.meta.description ?? "")}`}
