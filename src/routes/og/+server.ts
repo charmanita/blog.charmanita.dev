@@ -13,7 +13,8 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
     return new Response(await image.arrayBuffer(), {
       headers: { 'Content-Type': 'image/png',
         'Cache-Control': 'public, max-age=604800',
-        'Content-Length': image.headers.get('content-length') ?? ''
+        'Content-Length': image.headers.get('content-length') ?? '',
+        'Access-Control-Allow-Origin': '*'
       }
     });
   } catch {
@@ -21,7 +22,8 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
     const fallback = await fetch('/images/og.png');
     return new Response(await fallback.arrayBuffer(), {
       headers: { 'Content-Type': 'image/png',
-        'Cache-Control': 'public, max-age=604800'
+        'Cache-Control': 'public, max-age=604800',
+        'Access-Control-Allow-Origin': '*'
        }
     });
   }
