@@ -9,7 +9,7 @@
   <meta property="og:description" content={data.meta.description} />
   <meta
     property="og:image"
-    content={`https://mcapi.charmanita.dev/og?title=${encodeURIComponent(data.meta.title)}&desc=${encodeURIComponent(data.meta.description ?? "")}`}
+    content={`https://blog.charmanita.dev/og?title=${encodeURIComponent(data.meta.title)}&desc=${encodeURIComponent(data.meta.description ?? "")}`}
   />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
