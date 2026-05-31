@@ -9,9 +9,7 @@
   <meta property="og:description" content={data.meta.description} />
   <meta
     property="og:image"
-    content={data.meta.slug
-      ? `https://blog.charmanita.dev/og/${data.meta.slug}`
-      : `https://blog.charmanita.dev/images/og.png`}
+    content={`https://blog.charmanita.dev/og/${data.slug}`}
   />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
