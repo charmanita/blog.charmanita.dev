@@ -20,6 +20,7 @@
     content={`https://blog.charmanita.dev/${data.meta.slug}`}
   />
   <meta name="theme-color" content="#00ff88" />
+  <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <main>
