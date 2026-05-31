@@ -9,7 +9,9 @@
   <meta property="og:description" content={data.meta.description} />
   <meta
     property="og:image"
-    content={`https://blog.charmanita.dev/og/${data.slug}`}
+    content={data.slug
+      ? `https://blog.charmanita.dev/og/${data.slug}`
+      : `https://blog.charmanita.dev/images/og.png`}
   />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -21,6 +23,12 @@
   />
   <meta name="theme-color" content="#00ff88" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={data.meta.title} />
+  <meta name="twitter:description" content={data.meta.description} />
+  <meta
+    name="twitter:image"
+    content={data.meta.image ?? "https://blog.charmanita.dev/images/og.png"}
+  />
 </svelte:head>
 
 <main>
