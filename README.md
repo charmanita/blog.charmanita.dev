@@ -6,5 +6,6 @@ The blog works with embeds, with a typical og image that shows the link with the
 ## For example: 
 <img width="585" height="355" alt="image" src="https://github.com/user-attachments/assets/a23cd752-fe9a-492f-8e41-eb776ed9c70e" />
 
+---
 #### The v=5000 is unnecessary; I only did that for debugging purposes.
 Just a plain https://blog.charmanita.dev/workingwithapis will work on all major social platforms.
