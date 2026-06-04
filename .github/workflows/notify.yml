@@ -11,6 +11,8 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for deployment
+        run: sleep 30
+        
       - name: Call notify worker
-        run: |
-          curl -X POST https://notify.blog.charmanita.dev/ -H "X-Secret: ${{ secrets.NOTIFY_SECRET }}"
+        run: curl -X POST https://notify.blog.charmanita.dev/ -H "X-Secret: ${{ secrets.NOTIFY_SECRET }}"
