@@ -1,6 +1,7 @@
 <script lang="ts">
   export let data;
   import { formatDate } from "$lib/utils";
+  import Footer from "$lib/components/Footer.svelte";
 </script>
 
 <svelte:head>
@@ -40,7 +41,7 @@
       <svelte:component this={data.content} />
     </article>
   </div>
-  <footer>© 2026 Hunter Roberson · charmanita.dev</footer>
+  <Footer />
 </main>
 
 <style>
@@ -173,19 +174,6 @@
     border: none;
     border-top: 1px solid #1a1a1a;
     margin: 2rem 0;
-  }
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem;
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: white;
-    letter-spacing: 0.05em;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
   }
 
   @keyframes fadeIn {
