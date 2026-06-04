@@ -1,6 +1,6 @@
 
 export default {
-async fetch(request, env: Env) {
+async fetch(request: { method: string; }, env: Env) {
         // Verification it's a POST from Cloudflare
         if (request.method !== 'POST') return new Response('Method not allowed', { status: 405 });
 
