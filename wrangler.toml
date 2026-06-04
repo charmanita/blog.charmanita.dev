@@ -5,6 +5,8 @@ compatibility_flags = ["nodejs_compat"]
 [build]
 command = "npm run build"
 
-[assets]
+[vars]
+BREVO_LIST_ID = "3"
 
+[assets]
 directory = ".svelte-kit/cloudflare"

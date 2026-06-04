@@ -1,0 +1,16 @@
+name: Notify subscribers
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/posts/**"
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call notify worker
+        run: |
+          curl -X POST https://notify.blog.charmanita.dev/
