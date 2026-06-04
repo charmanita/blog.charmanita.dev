@@ -6,6 +6,19 @@
     console.log(p);
     posts = p;
   });
+  let email = "";
+  let status: "idle" | "loading" | "success" | "error" = "idle";
+
+  async function subscribe() {
+    if (!email) return;
+    status = "loading";
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    status = res.ok ? "success" : "error";
+  }
 </script>
 
 <svelte:head>
@@ -26,7 +39,27 @@
       {/each}
     </div>
   </div>
-  <footer>© 2026 Hunter Roberson · charmanita.dev</footer>
+  <footer>
+    © 2026 Hunter Roberson · charmanita.dev
+    <div class="subscribe">
+      {#if status === "success"}
+        <p>You're subscribed!</p>
+      {:else}
+        <input
+          type="email"
+          placeholder="your@email.com"
+          bind:value={email}
+          disabled={status === "loading"}
+        />
+        <button on:click={subscribe} disabled={status === "loading"}>
+          {status === "loading" ? "Subscribing..." : "Subscribe"}
+        </button>
+        {#if status === "error"}
+          <p class="error">Something went wrong, try again.</p>
+        {/if}
+      {/if}
+    </div>
+  </footer>
 </main>
 
 <style>
