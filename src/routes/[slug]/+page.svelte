@@ -110,6 +110,12 @@
     line-height: 1.8;
     margin-bottom: 1.25rem;
   }
+  .prose :global(h1) {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 2rem 0 0.75rem;
+  }
   .prose :global(h2) {
     color: #fff;
     font-size: 1rem;
