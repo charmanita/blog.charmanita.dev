@@ -31,12 +31,12 @@ async fetch(request: Request, env: Env) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: `Blog post: ${title}`,
+                name: `New blog post: ${title}`,
                 subject: title,
                 sender: { name: 'noreply', email: 'noreply@charmanita.dev' },
                 type: 'classic',
                 htmlContent: `
-                    <h1>${title}</h1>
+                    <h1>New blog post: ${title}</h1>
                     <p>${description}</p>
                     <a href="${link}">Read more</a>
                     <hr>
@@ -46,7 +46,6 @@ async fetch(request: Request, env: Env) {
                     <a href="{{ unsubscribe }}" style="font-size: 12px; color: #888;">Unsubscribe</a>
                 `,
                 recipients: { listIds: [Number(env.BREVO_LIST_ID)] },
-                scheduledAt: new Date(Date.now() + 60000).toISOString() // send in 1 min
             })
         });
 
