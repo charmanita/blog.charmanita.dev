@@ -1,6 +1,10 @@
 
 export default {
-async fetch(request: { method: string; }, env: Env) {
+async fetch(request: Request, env: Env) {
+        // Verification that it's owner or Github actions 
+        if (request.headers.get('X-Secret') !== env.NOTIFY_SECRET) {
+            return new Response('Unauthorized access.', { status: 401 });
+        }
         // Verification it's a POST from Cloudflare
         if (request.method !== 'POST') return new Response('Method not allowed', { status: 405 });
 
@@ -59,4 +63,5 @@ async fetch(request: { method: string; }, env: Env) {
 interface Env {
     BREVO_API_KEY: string;
     BREVO_LIST_ID: string;
+    NOTIFY_SECRET: string;
 }

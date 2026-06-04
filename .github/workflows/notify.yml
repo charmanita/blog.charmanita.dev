@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Call notify worker
         run: |
-          curl -X POST https://notify.blog.charmanita.dev/
+          curl -X POST https://notify.blog.charmanita.dev/ -H "X-Secret: ${{ secrets.NOTIFY_SECRET }}"
