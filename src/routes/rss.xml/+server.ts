@@ -6,7 +6,7 @@ export const GET: RequestHandler = async () => {
 
     const items = posts.map(post => `
   <item>
-    <title>${post.title}</title>
+    <title> New Post: ${post.title}</title>
     <link>https://blog.charmanita.dev/${post.slug}</link>
     <guid>https://blog.charmanita.dev/${post.slug}</guid>
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
