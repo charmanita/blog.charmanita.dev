@@ -1,6 +1,6 @@
 ---
 title: Notification Test
-date: 2026-06-04
+date: 2026-06-04T00:38Z
 description: Testing things out!
 ---
 MOM GET THE CAMERA! I set up a system on my blog that should be able to send emails when a new blog post is made on this website!

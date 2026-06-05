@@ -41,8 +41,10 @@
       <svelte:component this={data.content} />
     </article>
   </div>
-  <Footer />
 </main>
+<div class="footer-wrapper">
+  <Footer />
+</div>
 
 <style>
   :global(*, *::before, *::after) {
@@ -55,7 +57,9 @@
     min-height: 100%;
     background: #000;
   }
-
+  .footer-wrapper :global(footer) {
+    pointer-events: all;
+  }
   main {
     min-height: 100vh;
     display: flex;
@@ -63,7 +67,16 @@
     padding: 4rem 1.5rem;
     font-family: "IBM Plex Mono", monospace;
   }
-
+  .footer-wrapper {
+    position: fixed;
+    bottom: 1.25rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+  }
   .container {
     width: 100%;
     max-width: 640px;

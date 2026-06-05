@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Wait for deployment
         run: sleep 30
-        
+
       - name: Call notify worker
-        run: curl -X POST https://notify.blog.charmanita.dev/ -H "X-Secret: ${{ secrets.NOTIFY_SECRET }}"
+        run: |
+          curl -X POST https://notify.blog.charmanita.dev/ \
+            -H "X-Secret: ${{ secrets.NOTIFY_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '{"message":"Workflow complete"}'

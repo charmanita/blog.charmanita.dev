@@ -45,7 +45,8 @@
   main {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 4rem 1.5rem;
     font-family: "IBM Plex Mono", monospace;
   }
@@ -53,6 +54,7 @@
   .container {
     width: 100%;
     max-width: 640px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 2rem;

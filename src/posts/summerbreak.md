@@ -1,6 +1,6 @@
 ---
 title: Summer Break
-date: 2026-05-18
+date: 2026-05-18T22:20Z
 description: This blog post is just gonna be about my plans for the summer break.
 ---
 

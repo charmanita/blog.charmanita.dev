@@ -14,7 +14,7 @@
   }
 </script>
 
-<footer>
+<footer class="footer-blur">
   <p>© 2026 Hunter Roberson · charmanita.dev</p>
   <div class="subscribe">
     {#if status === "success"}
@@ -38,17 +38,31 @@
 
 <style>
   footer {
-    border-top: 1px solid #1a1a1a;
-    padding: 2rem;
-    text-align: center;
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.75rem;
     color: white;
     letter-spacing: 0.05em;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  }
+  .footer-blur {
+    width: fit-content;
+    min-width: 320px;
+    max-width: calc(100% - 3rem);
+    z-index: 10;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .subscribe {

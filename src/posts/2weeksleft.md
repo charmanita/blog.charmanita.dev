@@ -1,6 +1,6 @@
 ---
 title: 2 Weeks Left...
-date: 2026-05-01
+date: 2026-05-01T03:33Z
 description: Ready for summer...
 ---
 
