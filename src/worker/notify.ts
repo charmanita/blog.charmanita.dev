@@ -31,12 +31,12 @@ async fetch(request: Request, env: Env) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: `New blog post: ${title}`,
+                name: `${title}`,
                 subject: title,
                 sender: { name: 'noreply', email: 'noreply@charmanita.dev' },
                 type: 'classic',
                 htmlContent: `
-                    <h1>New blog post: ${title}</h1>
+                    <h1>${title}</h1>
                     <p>${description}</p>
                     <a href="${link}">Read more</a>
                     <hr>
