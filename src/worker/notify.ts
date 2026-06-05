@@ -55,9 +55,24 @@ async fetch(request: Request, env: Env) {
             return new Response('Failed to create campaign', { status: 500 });
         }
 
-        return new Response('Campaign scheduled', { status: 200 });
+    const campaign = await res.json() as { id: number };
+
+    const sendRes = await fetch(`https://api.brevo.com/v3/emailCampaigns/${campaign.id}/sendNow`, {
+        method: 'POST',
+        headers: {
+            'api-key': env.BREVO_API_KEY,
+        }
+    });
+
+    if (!sendRes.ok) {
+        const body = await sendRes.json();
+        console.log(body);
+        return new Response('Failed to send campaign', { status: 500 });
     }
-}
+
+    return new Response('Campaign sent', { status: 200 });
+        }
+    }
 
 interface Env {
     BREVO_API_KEY: string;
