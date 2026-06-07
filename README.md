@@ -9,3 +9,10 @@ The blog works with embeds, with a typical og image that shows the link with the
 ---
 #### The v=5000 is unnecessary; I only did that for debugging purposes.
 Just a plain https://blog.charmanita.dev/workingwithapis will work on all major social platforms.
+
+---
+### Live Preview:
+---
+![Live Preview](https://api.microlink.io?url=https://blog.charmanita.dev/&screenshot=true&meta=false&embed=screenshot.url)
+---
+
