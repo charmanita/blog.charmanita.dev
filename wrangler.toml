@@ -1,7 +1,8 @@
 name = "blog-charmanita-dev"
+main = ".svelte-kit/cloudflare/_worker.js"
 compatibility_date = "2026-05-29"
 compatibility_flags = ["nodejs_compat"]
-
+workers_dev = true
 [build]
 command = "npm run build"
 
@@ -10,3 +11,12 @@ BREVO_LIST_ID = "3"
 
 [assets]
 directory = ".svelte-kit/cloudflare"
+binding = "ASSETS"
+
+[[routes]]
+pattern = "blog.charmanita.dev"
+custom_domain = true
+
+[[routes]]
+pattern = "www.blog.charmanita.dev"
+custom_domain = true
