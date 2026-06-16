@@ -15,7 +15,7 @@
 
 <main>
   <div class="container">
-    <a href="https://charmanita.dev" class="back">← back</a>
+    <a href="https://charmanita.dev" class="back">← charmanita.dev</a>
     <h1 class="title">blog</h1>
     <div class="posts">
       {#each posts as post}
