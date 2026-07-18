@@ -4,7 +4,6 @@
   import Footer from "$lib/components/Footer.svelte";
   let posts: PostMeta[] = [];
   getPosts().then((p) => {
-    console.log(p);
     posts = p;
   });
 </script>
@@ -15,11 +14,13 @@
 
 <main>
   <div class="container">
-    <a href="https://charmanita.dev" class="back">← charmanita.dev</a>
-    <h1 class="title">blog</h1>
+    <a href="https://charmanita.dev" class="aero-pill aero-pill-ghost back"
+      >← charmanita.dev</a
+    >
+    <h1 class="aero-heading title">blog</h1>
     <div class="posts">
       {#each posts as post}
-        <a href="/{post.slug}" class="post">
+        <a href="/{post.slug}" class="aero-glass post">
           <span class="post-title">{post.title}</span>
           <span class="post-date">{formatDate(post.date)}</span>
           <p class="post-desc">{post.description}</p>
@@ -31,24 +32,12 @@
 </main>
 
 <style>
-  :global(*, *::before, *::after) {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  :global(html, body) {
-    width: 100%;
-    min-height: 100%;
-    background: #000;
-  }
-
   main {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 4rem 1.5rem;
-    font-family: "IBM Plex Mono", monospace;
   }
 
   .container {
@@ -63,60 +52,50 @@
   }
 
   .back {
-    font-size: 0.75rem;
-    color: #444;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    transition: color 0.2s ease;
-  }
-  .back:hover {
-    color: #fff;
+    width: fit-content;
   }
 
   .title {
-    font-size: clamp(1.1rem, 4vw, 1.6rem);
-    font-weight: 400;
-    color: #fff;
-    letter-spacing: 0.04em;
+    font-size: clamp(1.4rem, 5vw, 2rem);
   }
 
   .posts {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .post {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.4rem;
     text-decoration: none;
-    border-left: 1px solid #222;
-    padding-left: 1rem;
-    transition: border-color 0.2s ease;
+    padding: 1.5rem 1.75rem;
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
   }
   .post:hover {
-    border-color: #00ff88;
+    transform: translateY(-2px);
   }
 
   .post-title {
-    font-size: 0.95rem;
-    color: #fff;
-    transition: color 0.2s ease;
-  }
-  .post:hover .post-title {
-    color: #00ff88;
+    font-family: var(--aero-font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--aero-ink);
   }
 
   .post-date {
     font-size: 0.7rem;
-    color: #444;
-    letter-spacing: 0.08em;
+    color: var(--aero-ink-soft);
+    letter-spacing: 0.05em;
   }
 
   .post-desc {
-    font-size: 0.8rem;
-    color: #555;
+    font-size: 0.85rem;
+    color: var(--aero-ink-soft);
     line-height: 1.6;
   }
 

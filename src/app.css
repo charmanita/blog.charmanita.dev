@@ -1,0 +1,279 @@
+/* ---------------------------------------------
+   Frutiger Aero design tokens — shared site-wide
+--------------------------------------------- */
+:root {
+	--aero-sky-top: #bfe8ff;
+	--aero-sky-mid: #d9f6ee;
+	--aero-sky-bottom: #eafff0;
+
+	--aero-aqua: #1fb6c9;
+	--aero-aqua-deep: #0d6d80;
+	--aero-ink: #073744;
+	--aero-ink-soft: #0d4a5c;
+	--aero-accent: #ff8fb3;
+
+	--aero-glass-hi: rgba(255, 255, 255, 0.95);
+	--aero-glass-lo: rgba(200, 240, 235, 0.55);
+	--aero-glass-border: rgba(255, 255, 255, 0.8);
+	--aero-shadow: rgba(20, 90, 110, 0.18);
+
+	--aero-divider: rgba(7, 55, 68, 0.1);
+	--aero-inset-bg: rgba(255, 255, 255, 0.4);
+
+	--status-online: #21b978;
+	--status-offline: #ff6b74;
+
+	--aero-font-display: 'Baloo 2', sans-serif;
+	--aero-font-body: 'Quicksand', sans-serif;
+
+	color-scheme: light;
+}
+
+/* ---------- Dark theme tokens ---------- */
+:root[data-theme='dark'] {
+	--aero-sky-top: #071b2b;
+	--aero-sky-mid: #0a2a36;
+	--aero-sky-bottom: #07231f;
+
+	--aero-aqua: #3ddced;
+	--aero-aqua-deep: #23b9cc;
+	--aero-ink: #eaf6fa;
+	--aero-ink-soft: #a9d3dc;
+	--aero-accent: #ff9dc2;
+
+	--aero-glass-hi: rgba(255, 255, 255, 0.09);
+	--aero-glass-lo: rgba(255, 255, 255, 0.03);
+	--aero-glass-border: rgba(255, 255, 255, 0.14);
+	--aero-shadow: rgba(0, 0, 0, 0.45);
+
+	--aero-divider: rgba(255, 255, 255, 0.12);
+	--aero-inset-bg: rgba(255, 255, 255, 0.05);
+
+	color-scheme: dark;
+}
+
+* ,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100%;
+	min-height: 100%;
+	font-family: var(--aero-font-body);
+	color: var(--aero-ink-soft);
+}
+
+/* ---------- Shared background (used inside +layout.svelte) ---------- */
+
+.aero-sky {
+	position: fixed;
+	inset: 0;
+	background: linear-gradient(180deg, var(--aero-sky-top) 0%, var(--aero-sky-mid) 55%, var(--aero-sky-bottom) 100%);
+	z-index: 0;
+	transition: background 0.3s ease;
+}
+
+.aero-sky::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(ellipse 55% 30% at 18% 12%, rgba(255, 255, 255, 0.85), transparent 70%),
+		radial-gradient(ellipse 40% 22% at 78% 20%, rgba(255, 255, 255, 0.7), transparent 70%),
+		radial-gradient(ellipse 60% 35% at 50% 100%, rgba(140, 224, 200, 0.35), transparent 70%);
+	opacity: 1;
+	transition: opacity 0.3s ease;
+}
+
+:root[data-theme='dark'] .aero-sky::before {
+	opacity: 0.25;
+}
+
+.aero-bubbles {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.aero-bubble {
+	position: absolute;
+	bottom: -10%;
+	border-radius: 50%;
+	background:
+		radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.05) 40%),
+		radial-gradient(circle at 65% 70%, rgba(120, 220, 210, 0.25), rgba(120, 220, 210, 0) 60%);
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.5);
+	animation: aero-rise linear infinite;
+	opacity: 0.7;
+}
+
+:root[data-theme='dark'] .aero-bubble {
+	opacity: 0.35;
+}
+
+@keyframes aero-rise {
+	from {
+		transform: translateY(0) translateX(0);
+	}
+	50% {
+		transform: translateY(-55vh) translateX(12px);
+	}
+	to {
+		transform: translateY(-115vh) translateX(-8px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.aero-bubble {
+		animation: none;
+		opacity: 0.3;
+	}
+}
+
+/* ---------- Shared typography ---------- */
+
+.aero-heading {
+	font-family: var(--aero-font-display);
+	font-weight: 700;
+	letter-spacing: 0.01em;
+	background: linear-gradient(180deg, var(--aero-aqua) 0%, var(--aero-aqua-deep) 55%, var(--aero-ink) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+:root[data-theme='dark'] .aero-heading {
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.aero-heading .dot {
+	color: var(--aero-accent);
+	-webkit-text-fill-color: var(--aero-accent);
+}
+
+/* ---------- Shared glass panel ---------- */
+
+.aero-glass {
+	position: relative;
+	border-radius: 28px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.22));
+	border: 1px solid rgba(255, 255, 255, 0.75);
+	box-shadow:
+		0 8px 32px var(--aero-shadow),
+		inset 0 1px 0 rgba(255, 255, 255, 0.9),
+		inset 0 -12px 24px rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(14px);
+	transform: translateZ(0);
+	will-change: backdrop-filter;
+	isolation: isolate;
+}
+
+:root[data-theme='dark'] .aero-glass {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	box-shadow:
+		0 8px 32px var(--aero-shadow),
+		inset 0 1px 0 rgba(255, 255, 255, 0.1),
+		inset 0 -12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Shared pill buttons ---------- */
+
+.aero-pill {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	font-family: var(--aero-font-body);
+	font-size: 0.78rem;
+	font-weight: 500;
+	color: var(--aero-ink-soft);
+	text-decoration: none;
+	padding: 0.5rem 1.1rem;
+	border-radius: 999px;
+	background: linear-gradient(180deg, var(--aero-glass-hi), var(--aero-glass-lo));
+	border: 1px solid var(--aero-glass-border);
+	box-shadow: 0 2px 6px var(--aero-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+	will-change: transform;
+	transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.3s ease;
+}
+
+:root[data-theme='dark'] .aero-pill {
+	box-shadow: 0 2px 6px var(--aero-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.aero-pill::after {
+	content: '';
+	position: absolute;
+	top: -60%;
+	left: -30%;
+	width: 40%;
+	height: 220%;
+	background: rgba(255, 255, 255, 0.55);
+	transform: rotate(20deg);
+	transition: left 0.5s ease;
+}
+
+:root[data-theme='dark'] .aero-pill::after {
+	background: rgba(255, 255, 255, 0.12);
+}
+
+.aero-pill:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 14px rgba(20, 90, 110, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+	color: var(--aero-ink);
+}
+
+:root[data-theme='dark'] .aero-pill:hover {
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.aero-pill:hover::after {
+	left: 130%;
+}
+
+.aero-pill-ghost {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(180, 230, 220, 0.2));
+}
+
+:root[data-theme='dark'] .aero-pill-ghost {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+}
+
+/* ---------- Shared icon buttons ---------- */
+
+.aero-icon-btn {
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--aero-ink-soft);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(200, 240, 235, 0.4));
+	border: 1px solid var(--aero-glass-border);
+	box-shadow: 0 2px 6px var(--aero-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+	transition: transform 0.18s ease, color 0.18s ease, background 0.3s ease;
+}
+
+:root[data-theme='dark'] .aero-icon-btn {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+	box-shadow: 0 2px 6px var(--aero-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.aero-icon-btn:hover {
+	transform: translateY(-2px) scale(1.06);
+	color: var(--aero-aqua);
+}
+
+.aero-icon-btn svg {
+	width: 17px;
+	height: 17px;
+}

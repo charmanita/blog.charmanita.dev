@@ -14,7 +14,7 @@
   }
 </script>
 
-<footer class="footer-blur">
+<footer class="aero-glass footer-blur">
   <p>© 2026 Hunter Roberson · charmanita.dev</p>
   <div class="subscribe">
     {#if status === "success"}
@@ -38,9 +38,9 @@
 
 <style>
   footer {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--aero-font-body);
     font-size: 0.75rem;
-    color: white;
+    color: var(--aero-ink);
     letter-spacing: 0.05em;
   }
   .footer-blur {
@@ -48,21 +48,8 @@
     min-width: 320px;
     max-width: calc(100% - 3rem);
     z-index: 10;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0.02) 100%
-    );
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom-color: rgba(255, 255, 255, 0.04);
-    border-radius: 16px;
     padding: 1.25rem 2rem;
     text-align: center;
-    box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .subscribe {
@@ -75,47 +62,53 @@
   }
 
   input {
-    background: #0a0a0a;
-    border: 1px solid #1a1a1a;
-    color: #aaa;
-    font-family: "IBM Plex Mono", monospace;
+    background: var(--aero-inset-bg);
+    border: 1px solid var(--aero-glass-border);
+    color: var(--aero-ink);
+    font-family: var(--aero-font-body);
     font-size: 0.75rem;
     padding: 0.4rem 0.75rem;
-    border-radius: 3px;
+    border-radius: 999px;
     outline: none;
     transition: border-color 0.2s;
   }
 
   input:focus {
-    border-color: #00ff88;
+    border-color: var(--aero-aqua);
   }
 
   button {
-    background: none;
-    border: 1px solid #00ff88;
-    color: #00ff88;
-    font-family: "IBM Plex Mono", monospace;
+    background: linear-gradient(
+      180deg,
+      var(--aero-glass-hi),
+      var(--aero-glass-lo)
+    );
+    border: 1px solid var(--aero-glass-border);
+    color: var(--aero-aqua-deep);
+    font-family: var(--aero-font-body);
+    font-weight: 600;
     font-size: 0.75rem;
-    padding: 0.4rem 0.75rem;
-    border-radius: 3px;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
     cursor: pointer;
     transition:
-      background 0.2s,
-      color 0.2s;
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
   }
 
   button:hover {
-    background: #00ff88;
-    color: #000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px var(--aero-shadow);
   }
 
   button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    transform: none;
   }
 
   .error {
-    color: #ff4444;
+    color: #ff6b74;
     font-size: 0.7rem;
     width: 100%;
     text-align: center;
