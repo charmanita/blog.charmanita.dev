@@ -72,6 +72,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding-bottom: 5rem;
     animation: fadeIn 0.8s ease forwards 0.1s;
     opacity: 0;
   }
@@ -94,6 +95,29 @@
 
   .prose {
     padding: 2rem;
+  }
+  .prose :global(img) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    border-radius: 16px;
+    border: 1px solid var(--aero-glass-border);
+    box-shadow:
+      0 8px 20px var(--aero-shadow),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .prose :global(p:has(> img:only-child)) {
+    margin-bottom: 1.5rem;
+  }
+  .prose :global(p:has(> img:only-child) + p:has(> em:only-child)) {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--aero-ink-soft);
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
   }
   .prose :global(p) {
     color: var(--aero-ink-soft);
