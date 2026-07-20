@@ -2,6 +2,7 @@
   import { getPosts, type PostMeta } from "$lib/posts";
   import { formatDate } from "$lib/utils";
   import Footer from "$lib/components/Footer.svelte";
+  import MiiSitter from "$lib/components/MiiSitter.svelte";
   let posts: PostMeta[] = [];
   getPosts().then((p) => {
     posts = p;

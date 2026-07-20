@@ -2,6 +2,29 @@
   export let data;
   import { formatDate } from "$lib/utils";
   import Footer from "$lib/components/Footer.svelte";
+  import MiiSitter from "$lib/components/MiiSitter.svelte";
+
+  const POSES = [
+    "sitting",
+    "waving",
+    "fists",
+    "clasped",
+    "singing",
+    "leaning",
+    "wink",
+  ] as const;
+
+  // simple string hash → deterministic per-slug pose
+  function hashString(str: string): number {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = (hash << 5) - hash + str.charCodeAt(i);
+      hash |= 0;
+    }
+    return Math.abs(hash);
+  }
+
+  $: pose = POSES[hashString(data.slug) % POSES.length];
 </script>
 
 <svelte:head>
@@ -37,6 +60,9 @@
       <h1 class="aero-heading title">{data.meta.title}</h1>
       <time class="date">{formatDate(data.meta.date)}</time>
     </header>
+
+    <MiiSitter {pose} />
+
     <article class="aero-glass prose">
       <svelte:component this={data.content} />
     </article>
@@ -182,7 +208,9 @@
     border-top: 1px solid var(--aero-divider);
     margin: 2rem 0;
   }
-
+  .article-wrap {
+    position: relative;
+  }
   @keyframes fadeIn {
     from {
       opacity: 0;
