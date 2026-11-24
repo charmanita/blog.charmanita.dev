@@ -11,12 +11,25 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for deployment
-        run: sleep 30
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find newly added post
+        id: post
+        run: |
+          FILE=$(git diff --diff-filter=A --name-only HEAD~1 HEAD -- 'src/posts/**' | head -n1)
+          if [ -z "$FILE" ]; then
+            echo "No new post, skipping"
+            exit 0
+          fi
+          SLUG=$(basename "$FILE" | sed 's/\.[^.]*$//')
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
 
       - name: Call notify worker
+        if: steps.post.outputs.slug != ''
         run: |
-          curl -X POST https://notify.blog.charmanita.dev/ \
+          curl --fail-with-body -X POST https://notify.blog.charmanita.dev/ \
             -H "X-Secret: ${{ secrets.NOTIFY_SECRET }}" \
             -H "Content-Type: application/json" \
-            -d '{"message":"Workflow complete"}'
+            -d '{"slug":"${{ steps.post.outputs.slug }}"}'
