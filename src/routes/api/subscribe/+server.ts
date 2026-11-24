@@ -21,7 +21,7 @@ export const POST: RequestHandler = async ({ request }) => {
     const body = res.ok ? null : await res.json();
     if (!res.ok) {
         console.log(body);
-        return json({ error: 'Failed to subscribe' }, { status: 500 });
+        return json({ error: body }, { status: 500 });
     }
     return json({ success: true });
 };
